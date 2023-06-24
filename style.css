@@ -6,9 +6,13 @@ body {
     width: 100%;
     font-family: Arial, sans-serif;
   }
+  body.dark-mode {
+    background-color: rgb(17, 8, 8);
+    color: rgb(202, 31, 31);
+}
   
   header {
-    background-color: #f2f2f2;
+    
     padding: 4px;
     display: flex;
     align-items: center;
@@ -21,6 +25,114 @@ body {
     width: 100%;
     z-index: 100;
     
+  }
+  .switch {
+    font-size: 17px;
+    position: relative;
+    display: inline-block;
+    width: 64px;
+    height: 34px;
+    margin-right: 50px;
+  }
+  
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #eef5fa;
+    transition: .4s;
+    border-radius: 30px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 30px;
+    width: 30px;
+    border-radius: 20px;
+    left: 2px;
+    bottom: 2px;
+    z-index: 2;
+    background-color: #ccc;
+    transition: .4s;
+  }
+  
+  .sun svg {
+    position: absolute;
+    top: 6px;
+    left: 36px;
+    z-index: 1;
+    width: 24px;
+    height: 18px;
+  }
+  
+  .moon svg {
+    fill: #73C0FC;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    z-index: 1;
+    width: 24px;
+    height: 18px;
+  }
+  
+  /* .switch:hover */.sun svg {
+    animation: rotate 15s linear infinite;
+  }
+  
+  @keyframes rotate {
+   
+    0% {
+      transform: rotate(0);
+    }
+  
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* .switch:hover */.moon svg {
+    animation: tilt 5s linear infinite;
+  }
+  
+  @keyframes tilt {
+   
+    0% {
+      transform: rotate(0deg);
+    }
+  
+    25% {
+      transform: rotate(-10deg);
+    }
+  
+    75% {
+      transform: rotate(10deg);
+    }
+  
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+  
+  .input:checked + .slider {
+    background-color: #183153;
+  }
+  
+  .input:focus + .slider {
+    box-shadow: 0 0 1px #183153;
+  }
+  
+  .input:checked + .slider:before {
+    transform: translateX(30px);
   }
   
   .logo {
@@ -47,6 +159,7 @@ body {
     display: inline-block;
     font-size: 16px;
     margin: 4px 50px;
+    margin-right: 5%;
     cursor: pointer;
     border-radius: 12px;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
@@ -99,6 +212,7 @@ body {
     transform: scaleX(1);
   }
 
+  
   .intro {
     text-align: left;
     align-items: center;
@@ -194,6 +308,7 @@ body {
   position: fixed;
   top: 12%;
   right: 2%;
+  z-index: -1;
   /* transform: translate(50%, -50%);
   transition: transform 0.5s ease; */
 }
@@ -354,7 +469,7 @@ body {
   .image-container {
     position: relative;
     width: 100%;
-    height: 58%;
+    height: 47%;
     /* padding-bottom: 66.67%; Set the aspect ratio to 3:2 (200/300 = 0.6667) */
     border: 1px solid #ccc;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
@@ -390,15 +505,16 @@ body {
 }
 
 .project {
-  background-color: #f2f2f2;
+  /* background-color: #f2f2f2; */
   border-radius: 10px;
   height: 63%;
   padding: 20px;
   text-align: center;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 2px 4px #FFc700;
   transition: transform 0.3s ease;
   margin-top: 10px;
   margin-bottom: 10px;
+  height: 520px;
 }
 
 .project:hover {
@@ -411,7 +527,7 @@ body {
   height: 100%;
   border-radius: 8px;
   margin: 5px;
-  object-fit: cover;
+  
 }
 
 .project h3 {
@@ -456,6 +572,8 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+
 
 footer {
   background-color: #f2f2f2;
